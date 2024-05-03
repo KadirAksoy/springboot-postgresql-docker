@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  postgres_db:
+    container_name: java_db
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: exampledb
+
+#    # Adminer hizmeti, veritabani yonetim arayuzu saglar.
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8081:8081  # Adminer'a disaridan erisim saglar.
+
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    container_name: my_pgadmin
+#    restart: unless-stopped
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: kadir.aksoy@outlook.com.tr
+#      PGADMIN_DEFAULT_PASSWORD: password
+#    ports:
+#      - "8081:8081"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: my_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      #PGADMIN_PORT: 5050
+      #PGADMIN_CONFIG_SERVER_MODE: "False"
+      #PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "5050:80"
+
